@@ -18,11 +18,13 @@ geantv \
 
 CORES=1
 
+join_by() { local IFS="$1"; shift; echo "$*"; }
+
 usage() {
 	echo "Options:"
 	echo -e "-j [cores]          \tnumber of cores for make (default = $CORES)"
-	echo -e "-L [pkg1,pkg2,...]  \tpackages to link from LCG (default = ${LINKS[@]})"
-	echo -e "-I [pkg1,pkg2,...]  \tpackages to install from source (default = ${INSTALLS[@]})"
+	echo -e "-L [pkg1,pkg2,...]  \tpackages to link from LCG (default = "$(join_by , "${LINKS[@]}")")"
+	echo -e "-I [pkg1,pkg2,...]  \tpackages to install from source (default = "$(join_by , "${INSTALLS[@]}")")"
 	echo -e "-h                  \tshow this message and exit"
 	exit 1
 }
