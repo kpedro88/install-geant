@@ -50,7 +50,7 @@ for LINK in ${LINKS[@]}; do
 	fname=scripts/link_${LINK}.sh
 	if [ -e $fname ]; then
 		echo "Linking ${LINK}"
-		./$fname > logs/{$LINK}.log 2>&1
+		./$fname > logs/${LINK}.log 2>&1
 	else
 		echo "Can't link $LINK, exiting"
 		exit 1
@@ -62,7 +62,7 @@ for INSTALL in ${INSTALLS[@]}; do
 	fname=scripts/install_${INSTALL}.sh
 	if [ -e $fname ]; then
 		echo "Installing ${INSTALL}"
-		./$fname $CORES > logs/{$INSTALL}.log 2>&1
+		./$fname $CORES > logs/${INSTALL}.log 2>&1
 	else
 		echo "Can't install $INSTALL, exiting"
 		exit 1
