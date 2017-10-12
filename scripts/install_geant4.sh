@@ -3,7 +3,7 @@
 source init.sh
 
 if ! [ -d geant4.10.03.p02 ]; then
-	wget http://cern.ch/geant4/support/source/geant4.10.03.p02.tar.gz
+	wget -q http://cern.ch/geant4/support/source/geant4.10.03.p02.tar.gz
 	tar -xzf geant4.10.03.p02.tar.gz
 	rm geant4.10.03.p02.tar.gz
 fi

@@ -3,7 +3,7 @@
 source init.sh
 
 if ! [ -d pythia8186 ]; then
-	wget http://home.thep.lu.se/~torbjorn/pythia8/pythia8186.tgz
+	wget -q http://home.thep.lu.se/~torbjorn/pythia8/pythia8186.tgz
 	tar -xzf pythia8186.tgz
 	rm pythia8186.tgz
 fi
