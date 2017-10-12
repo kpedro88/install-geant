@@ -31,7 +31,7 @@ if [ -d $dxercesc ]; then
 fi
 
 # to get ROOT
-thisroot=$LOCAL/root/install/bin/thisroot.csh
+thisroot=$LOCAL/root/install/bin/thisroot.sh
 if [ -f $thisroot ]; then
 	source $thisroot
 	export PATH=${PATH}:${ROOTSYS}/bin
