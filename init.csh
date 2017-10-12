@@ -30,6 +30,18 @@ if ( -d $dxercesc ) then
 	setenv LD_LIBRARY_PATH ${dxercesc}/lib:${LD_LIBRARY_PATH}
 endif
 
+# to get boost
+set dboost=${LOCAL}/boost
+if ( -d $dboost ) then
+	setenv LD_LIBRARY_PATH ${dboost}/lib:${LD_LIBRARY_PATH}
+endif
+
+# to get tbb
+set dtbb=${LOCAL}/tbb
+if ( -d $dtbb ) then
+	setenv LD_LIBRARY_PATH ${dtbb}/lib:${LD_LIBRARY_PATH}
+endif
+
 # to get ROOT
 set thisroot=$LOCAL/root/install/bin/thisroot.csh
 if ( -f $thisroot ) then

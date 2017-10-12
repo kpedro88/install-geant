@@ -4,6 +4,8 @@ LINKS=(
 python \
 clhep \
 xercesc \
+boost \
+tbb \
 )
 
 INSTALLS=(
