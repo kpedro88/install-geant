@@ -27,7 +27,7 @@ fi
 # to get xercesc
 dxercesc=${LOCAL}/xercesc
 if [ -d $dxercesc ]; then
-	export LD_LIBRARY_PATH=${dxerces}/lib:${LD_LIBRARY_PATH}
+	export LD_LIBRARY_PATH=${dxercesc}/lib:${LD_LIBRARY_PATH}
 fi
 
 # to get ROOT

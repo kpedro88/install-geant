@@ -27,7 +27,7 @@ endif
 # to get xercesc
 set dxercesc=${LOCAL}/xercesc
 if ( -d $dxercesc ) then
-	setenv LD_LIBRARY_PATH ${dxerces}/lib:${LD_LIBRARY_PATH}
+	setenv LD_LIBRARY_PATH ${dxercesc}/lib:${LD_LIBRARY_PATH}
 endif
 
 # to get ROOT
