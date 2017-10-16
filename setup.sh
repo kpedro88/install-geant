@@ -16,7 +16,7 @@ pythia8 \
 veccore \
 vecgeom \
 geantv \
-#toy-mt-framework \
+toy-mt-framework \
 )
 
 CORES=1

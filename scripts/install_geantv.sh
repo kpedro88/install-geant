@@ -3,7 +3,7 @@
 source init.sh
 
 if ! [ -d geant ]; then
-	git clone https://gitlab.cern.ch/GeantV/geant.git
+	git clone https://gitlab.cern.ch/GeantV/geant.git -b lima/forToyCMS
 fi
 
 cd geant
