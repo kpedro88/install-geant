@@ -33,13 +33,13 @@ fi
 # to get boost
 set dboost=${LOCAL}/boost
 if [ -d $dboost ]; then
-	setenv LD_LIBRARY_PATH ${dboost}/lib:${LD_LIBRARY_PATH}
+	export LD_LIBRARY_PATH=${dboost}/lib:${LD_LIBRARY_PATH}
 fi
 
 # to get tbb
 set dtbb=${LOCAL}/tbb
 if [ -d $dtbb ]; then
-	setenv LD_LIBRARY_PATH ${dtbb}/lib:${LD_LIBRARY_PATH}
+	export LD_LIBRARY_PATH=${dtbb}/lib:${LD_LIBRARY_PATH}
 fi
 
 # to get ROOT
