@@ -16,6 +16,7 @@ if [ -d $dpython ]; then
 	export PATH=${dpython}/bin:${PATH}
 	export LD_LIBRARY_PATH=${dpython}/lib:${LD_LIBRARY_PATH}
 	export PYTHONPATH=${LCG}/lib/python2.7/site-packages:${PYTHONPATH}
+	export PYTHONHOME=/cvmfs/sft.cern.ch/lcg/releases/Python/2.7.13-597a5/x86_64-slc6-gcc62-opt
 fi
 
 # to get clhep
@@ -31,15 +32,22 @@ if [ -d $dxercesc ]; then
 fi
 
 # to get boost
-set dboost=${LOCAL}/boost
+dboost=${LOCAL}/boost
 if [ -d $dboost ]; then
 	export LD_LIBRARY_PATH=${dboost}/lib:${LD_LIBRARY_PATH}
 fi
 
 # to get tbb
-set dtbb=${LOCAL}/tbb
+dtbb=${LOCAL}/tbb
 if [ -d $dtbb ]; then
 	export LD_LIBRARY_PATH=${dtbb}/lib:${LD_LIBRARY_PATH}
+fi
+
+# to get gdb (& dependencies)
+dgdb=${LOCAL}/gdb
+if [ -d $dgdb ; then
+	export PAT=${dgdb}/bin:${PATH}
+	export LD_LIBRARY_PATH=${dgdb}/lib:${LD_LIBRARY_PATH}
 fi
 
 # to get ROOT

@@ -6,6 +6,7 @@ clhep \
 xercesc \
 boost \
 tbb \
+gdb \
 )
 
 INSTALLS_ALL=(

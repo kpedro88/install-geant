@@ -16,6 +16,7 @@ if ( -d $dpython ) then
 	setenv PATH ${dpython}/bin:${PATH}
 	setenv LD_LIBRARY_PATH ${dpython}/lib:${LD_LIBRARY_PATH}
 	setenv PYTHONPATH ${LCG}/lib/python2.7/site-packages:${PYTHONPATH}
+	setenv PYTHONHOME /cvmfs/sft.cern.ch/lcg/releases/Python/2.7.13-597a5/x86_64-slc6-gcc62-opt
 endif
 
 # to get clhep
@@ -40,6 +41,13 @@ endif
 set dtbb=${LOCAL}/tbb
 if ( -d $dtbb ) then
 	setenv LD_LIBRARY_PATH ${dtbb}/lib:${LD_LIBRARY_PATH}
+endif
+
+# to get gdb (& dependencies)
+set dgdb=${LOCAL}/gdb
+if ( -d $dgdb ) then
+	setenv PATH ${dgdb}/bin:${PATH}
+	setenv LD_LIBRARY_PATH ${dgdb}/lib:${LD_LIBRARY_PATH}
 endif
 
 # to get ROOT
