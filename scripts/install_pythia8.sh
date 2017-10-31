@@ -10,7 +10,12 @@ fi
 
 cd pythia8186
 
-./configure --prefix=$LOCAL/pythia8/install --enable-shared
+DEBUGFLAGPYTHIA=""
+if [ -n "$DEBUGFLAG" ]; then
+	DEBUGFLAGPYTHIA=--enable-debug
+fi
+
+./configure $DEBUGFLAGPYTHIA --prefix=$LOCAL/pythia8/install --enable-shared
 make -j $1
 make install
 

@@ -23,6 +23,7 @@ CORES=1
 LINKS=()
 INSTALLS=()
 DRYRUN=""
+export DEBUGFLAG=""
 
 case `uname` in
   Linux) ECHO="echo -e" ;;
@@ -37,12 +38,13 @@ usage() {
 	$ECHO "-L [pkg1,pkg2,...]  \tpackages to link from LCG (allowed = "$(join_by , "${LINKS_ALL[@]}")"; or all)"
 	$ECHO "-I [pkg1,pkg2,...]  \tpackages to install from source (allowed = "$(join_by , "${INSTALLS_ALL[@]}")"; or all)"
 	$ECHO "-D                  \tdry-run: show option values and exit"
+	$ECHO "-d                  \tenable debug flags for compilation (when available)"
 	$ECHO "-h                  \tshow this message and exit"
 	exit 1
 }
 
 # check arguments
-while getopts "j:L:I:Dh" opt; do
+while getopts "j:L:I:Ddh" opt; do
 	case "$opt" in
 		j) CORES=$OPTARG
 		;;
@@ -51,6 +53,8 @@ while getopts "j:L:I:Dh" opt; do
 		I) if [ "$OPTARG" = all ]; then INSTALLS=(${INSTALLS_ALL[@]}); else IFS="," read -a INSTALLS <<< "$OPTARG"; fi
 		;;
 		D) DRYRUN=true
+		;;
+		d) export DEBUGFLAG="-DCMAKE_BUILD_TYPE=Debug"
 		;;
 		h) usage
 		;;
@@ -65,6 +69,9 @@ if [ -n "$DRYRUN" ]; then
 	$ECHO "CORES = $CORES"
 	$ECHO "LINKS = "$(join_by , "${LINKS[@]}")
 	$ECHO "INSTALLS = "$(join_by , "${INSTALLS[@]}")
+	if [ -n "$DEBUGFLAG" ]; then
+		$ECHO "DEBUGFLAG = $DEBUGFLAG"
+	fi
 	exit 0
 fi
 

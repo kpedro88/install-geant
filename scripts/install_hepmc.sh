@@ -17,7 +17,7 @@ fi
 
 mkdir build
 cd build
-cmake ../ -DCMAKE_INSTALL_PREFIX=$LOCAL/hepmc/install -DROOT_DIR=$ROOTSYS/cmake 
+cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$LOCAL/hepmc/install -DROOT_DIR=$ROOTSYS/cmake 
 make -j $1
 make install
 
