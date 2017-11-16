@@ -2,13 +2,19 @@
 
 source init.sh
 
-if ! [ -d pythia8186 ]; then
+SOURCEDIR=pythia8186
+
+if [ "$FORCERECOMP" = "true" ]; then
+	rm -rf $SOURCEDIR
+fi
+
+if ! [ -d $SOURCEDIR ]; then
 	wget -q http://home.thep.lu.se/~torbjorn/pythia8/pythia8186.tgz
 	tar -xzf pythia8186.tgz
 	rm pythia8186.tgz
 fi
 
-cd pythia8186
+cd $SOURCEDIR
 
 DEBUGFLAGPYTHIA=""
 if [ -n "$DEBUGFLAG" ]; then

@@ -2,11 +2,17 @@
 
 source init.sh
 
-if ! [ -d geant ]; then
+SOURCEDIR=geant
+
+if [ "$FORCERECOMP" = "true" ]; then
+	rm -rf $SOURCEDIR
+fi
+
+if ! [ -d $SOURCEDIR ]; then
 	git clone https://gitlab.cern.ch/GeantV/geant.git -b lima/forToyCMS
 fi
 
-cd geant
+cd $SOURCEDIR
 
 if [ -d build ]; then
 	rm -rf build

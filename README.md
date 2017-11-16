@@ -16,5 +16,6 @@ Options:
 -I [pkg1,pkg2,...]      packages to install from source (allowed = root,geant4,hepmc,pythia8,veccore,vecgeom,geantv,toy-mt-framework; or all)
 -D                      dry-run: show option values and exit
 -d                      enable debug flags for compilation (when available)
+-f                      force complete reinstallation (delete and recopy source directories)
 -h                      show this message and exit
 ```

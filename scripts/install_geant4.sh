@@ -2,13 +2,19 @@
 
 source init.sh
 
-if ! [ -d geant4.10.03.p02 ]; then
+SOURCEDIR=geant4.10.03.p02
+
+if [ "$FORCERECOMP" = "true" ]; then
+	rm -rf $SOURCEDIR
+fi
+
+if ! [ -d $SOURCEDIR ]; then
 	wget -q http://cern.ch/geant4/support/source/geant4.10.03.p02.tar.gz
 	tar -xzf geant4.10.03.p02.tar.gz
 	rm geant4.10.03.p02.tar.gz
 fi
 
-cd geant4.10.03.p02
+cd $SOURCEDIR
 
 if [ -d build ]; then
 	rm -rf build

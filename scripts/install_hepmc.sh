@@ -2,14 +2,20 @@
 
 source init.sh
 
-if ! [ -d HepMC3 ]; then
+SOURCEDIR=HepMC3
+
+if [ "$FORCERECOMP" = "true" ]; then
+	rm -rf $SOURCEDIR
+fi
+
+if ! [ -d $SOURCEDIR ]; then
 	git clone https://gitlab.cern.ch/hepmc/HepMC3.git
 	cd HepMC3
 	git checkout -b beta2.0 beta2.0
 	cd ..
 fi
 
-cd HepMC3
+cd $SOURCEDIR
 
 if [ -d build ]; then
 	rm -rf build

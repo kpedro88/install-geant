@@ -2,11 +2,17 @@
 
 source init.sh
 
-if ! [ -d VecGeom ]; then
+SOURCEDIR=VecGeom
+
+if [ "$FORCERECOMP" = "true" ]; then
+	rm -rf $SOURCEDIR
+fi
+
+if ! [ -d $SOURCEDIR ]; then
 	git clone https://gitlab.cern.ch/VecGeom/VecGeom.git
 fi
 
-cd VecGeom
+cd $SOURCEDIR
 
 if [ -d build ]; then
 	rm -rf build

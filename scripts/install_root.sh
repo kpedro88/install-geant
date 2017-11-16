@@ -2,13 +2,19 @@
 
 source init.sh
 
-if ! [ -d root-6.10.02 ]; then
+SOURCEDIR=root-6.10.02
+
+if [ "$FORCERECOMP" = "true" ]; then
+	rm -rf $SOURCEDIR
+fi
+
+if ! [ -d $SOURCEDIR ]; then
 	wget -q https://root.cern.ch/download/root_v6.10.02.source.tar.gz
 	tar -xzf root_v6.10.02.source.tar.gz
 	rm root_v6.10.02.source.tar.gz
 fi
 
-cd root-6.10.02
+cd $SOURCEDIR
 
 if [ -d build_ ]; then
 	rm -rf build_

@@ -2,11 +2,17 @@
 
 source init.sh
 
-if ! [ -d veccore ]; then
+SOURCEDIR=veccore
+
+if [ "$FORCERECOMP" = "true" ]; then
+	rm -rf $SOURCEDIR
+fi
+
+if ! [ -d $SOURCEDIR ]; then
 	git clone https://github.com/root-project/veccore.git
 fi
 
-cd veccore
+cd $SOURCEDIR
 
 if [ -d build ]; then
 	rm -rf build

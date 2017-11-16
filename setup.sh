@@ -40,12 +40,13 @@ usage() {
 	$ECHO "-I [pkg1,pkg2,...]  \tpackages to install from source (allowed = "$(join_by , "${INSTALLS_ALL[@]}")"; or all)"
 	$ECHO "-D                  \tdry-run: show option values and exit"
 	$ECHO "-d                  \tenable debug flags for compilation (when available)"
+	$ECHO "-f                  \tforce complete reinstallation (delete and recopy source directories)"
 	$ECHO "-h                  \tshow this message and exit"
 	exit 1
 }
 
 # check arguments
-while getopts "j:L:I:Ddh" opt; do
+while getopts "j:L:I:Ddfh" opt; do
 	case "$opt" in
 		j) CORES=$OPTARG
 		;;
@@ -56,6 +57,8 @@ while getopts "j:L:I:Ddh" opt; do
 		D) DRYRUN=true
 		;;
 		d) export DEBUGFLAG="-DCMAKE_BUILD_TYPE=Debug"
+		;;
+		f) export FORCERECOMP=true
 		;;
 		h) usage
 		;;

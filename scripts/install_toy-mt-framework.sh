@@ -2,11 +2,17 @@
 
 source init.sh
 
-if ! [ -d toy-mt-framework ]; then
+SOURCEDIR=toy-mt-framework
+
+if [ "$FORCERECOMP" = "true" ]; then
+	rm -rf $SOURCEDIR
+fi
+
+if ! [ -d $SOURCEDIR ]; then
 	git clone git@github.com:kpedro88/toy-mt-framework.git -b geantv
 fi
 
-cd toy-mt-framework
+cd $SOURCEDIR
 
 if [ -d build ]; then
 	rm -rf build
