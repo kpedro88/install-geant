@@ -45,8 +45,8 @@ fi
 
 # to get gdb (& dependencies)
 dgdb=${LOCAL}/gdb
-if [ -d $dgdb ; then
-	export PAT=${dgdb}/bin:${PATH}
+if [ -d $dgdb ]; then
+	export PATH=${dgdb}/bin:${PATH}
 	export LD_LIBRARY_PATH=${dgdb}/lib:${LD_LIBRARY_PATH}
 fi
 
