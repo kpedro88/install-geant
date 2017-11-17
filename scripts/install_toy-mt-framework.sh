@@ -9,7 +9,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone git@github.com:kpedro88/toy-mt-framework.git -b geantv
+	git clone git@github.com:kpedro88/toy-mt-framework.git -b geantv2
 fi
 
 cd $SOURCEDIR
