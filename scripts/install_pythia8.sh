@@ -3,6 +3,11 @@
 source init.sh
 
 SOURCEDIR=pythia8186
+INSTALLDIR=$LOCAL/pythia8/install
+
+if [ -d $INSTALLDIR ]; then
+    rm -rf $INSTALLDIR
+fi
 
 if [ "$FORCERECOMP" = "true" ]; then
 	rm -rf $SOURCEDIR
@@ -21,7 +26,7 @@ if [ -n "$DEBUGFLAG" ]; then
 	DEBUGFLAGPYTHIA=--enable-debug
 fi
 
-./configure $DEBUGFLAGPYTHIA --prefix=$LOCAL/pythia8/install --enable-shared
+./configure $DEBUGFLAGPYTHIA --prefix=$INSTALLDIR --enable-shared
 make -j $1
 make install
 

@@ -3,6 +3,11 @@
 source init.sh
 
 SOURCEDIR=veccore
+INSTALLDIR=$LOCAL/veccore/install
+
+if [ -d $INSTALLDIR ]; then
+    rm -rf $INSTALLDIR
+fi
 
 if [ "$FORCERECOMP" = "true" ]; then
 	rm -rf $SOURCEDIR
@@ -20,7 +25,7 @@ fi
 
 mkdir build
 cd build
-cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$LOCAL/veccore/install -DBUILD_UMESIMD="ON" -DBUILD_VC="ON" -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DBUILD_UMESIMD="ON" -DBUILD_VC="ON" -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 make -j $1
 make install
 

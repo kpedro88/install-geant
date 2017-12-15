@@ -3,6 +3,11 @@
 source init.sh
 
 SOURCEDIR=HepMC3
+INSTALLDIR=$LOCAL/hepcm/install
+
+if [ -d $INSTALLDIR ]; then
+    rm -rf $INSTALLDIR
+fi
 
 if [ "$FORCERECOMP" = "true" ]; then
 	rm -rf $SOURCEDIR
@@ -23,7 +28,7 @@ fi
 
 mkdir build
 cd build
-cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$LOCAL/hepmc/install -DROOT_DIR=$ROOTSYS/cmake 
+cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DROOT_DIR=$ROOTSYS/cmake 
 make -j $1
 make install
 
