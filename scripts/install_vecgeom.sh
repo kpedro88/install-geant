@@ -14,7 +14,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone https://gitlab.cern.ch/VecGeom/VecGeom.git
+	git clone https://gitlab.cern.ch/VecGeom/VecGeom.git -b v0.5
 fi
 
 cd $SOURCEDIR

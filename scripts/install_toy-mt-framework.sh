@@ -14,7 +14,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone git@github.com:kpedro88/toy-mt-framework.git -b geantv2
+	git clone git@github.com:mrguilima/toy-mt-framework.git -b master
 fi
 
 cd $SOURCEDIR
@@ -25,6 +25,6 @@ fi
 
 mkdir build
 cd build
-cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DVecGeom_DIR=$LOCAL/vecgeom/install/lib/CMake/VecGeom/ -DVecGeom_INCLUDE_DIR=$LOCAL/vecgeom/install/include -DGeantV_DIR=$LOCAL/geantv/install -DGeantV_INCLUDE_DIR=$LOCAL/../geant -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DTBB_ROOT_DIR=$LOCAL/tbb -DHepMC_DIR=$LOCAL/hepmc/install/share/HepMC/cmake/ -DCMAKE_PREFIX_PATH=$LOCAL/veccore/install/lib/cmake/Vc -DBOOST_ROOT=$LOCAL/boost
+cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DVecGeom_DIR=$LOCAL/vecgeom/install/lib/cmake/VecGeom/ -DVecGeom_INCLUDE_DIR=$LOCAL/vecgeom/install/include -DGeantV_DIR=$LOCAL/geantv/install -DGeantV_INCLUDE_DIR=$LOCAL/../geant -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DTBB_ROOT_DIR=$LOCAL/tbb -DHepMC_DIR=$LOCAL/hepmc/install/share/HepMC/cmake/ -DCMAKE_PREFIX_PATH=$LOCAL/veccore/install/lib/cmake/Vc -DBOOST_ROOT=$LOCAL/boost
 make -j $1
 
