@@ -3,7 +3,7 @@
 source init.sh
 
 SOURCEDIR=HepMC3
-INSTALLDIR=$LOCAL/hepcm/install
+INSTALLDIR=$LOCAL/hepmc/install
 
 if [ -d $INSTALLDIR ]; then
     rm -rf $INSTALLDIR
