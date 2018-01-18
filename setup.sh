@@ -7,6 +7,7 @@ xercesc \
 boost \
 tbb \
 gdb \
+igprof \
 )
 
 INSTALLS_ALL=(

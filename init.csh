@@ -50,6 +50,12 @@ if ( -d $dgdb ) then
 	setenv LD_LIBRARY_PATH ${dgdb}/lib:${LD_LIBRARY_PATH}
 endif
 
+# to get igprof
+set digp=${LOCAL}/igprof
+if ( -d $digp ) then
+	setenv PATH ${digp}/bin:${PATH}
+endif
+
 # to get ROOT
 set thisroot=$LOCAL/root/install/bin/thisroot.csh
 if ( -f $thisroot ) then

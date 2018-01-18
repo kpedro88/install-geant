@@ -50,6 +50,12 @@ if [ -d $dgdb ]; then
 	export LD_LIBRARY_PATH=${dgdb}/lib:${LD_LIBRARY_PATH}
 fi
 
+# to get igprof
+digp=${LOCAL}/igprof
+if [ -d $digp ]; then
+	export PATH=${digp}/bin:${PATH}
+fi
+
 # to get ROOT
 thisroot=$LOCAL/root/install/bin/thisroot.sh
 if [ -f $thisroot ]; then
