@@ -54,6 +54,7 @@ endif
 set digp=${LOCAL}/igprof
 if ( -d $digp ) then
 	setenv PATH ${digp}/bin:${PATH}
+	setenv LD_LIBRARY_PATH ${digp}/lib:${LD_LIBRARY_PATH}
 endif
 
 # to get ROOT

@@ -54,6 +54,7 @@ fi
 digp=${LOCAL}/igprof
 if [ -d $digp ]; then
 	export PATH=${digp}/bin:${PATH}
+	export LD_LIBRARY_PATH=${digp}/lib:${LD_LIBRARY_PATH}
 fi
 
 # to get ROOT
