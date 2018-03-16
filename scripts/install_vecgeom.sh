@@ -14,7 +14,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone https://gitlab.cern.ch/VecGeom/VecGeom.git -b v0.5
+	git clone https://gitlab.cern.ch/VecGeom/VecGeom.git -b v00.05.01
 fi
 
 cd $SOURCEDIR
@@ -28,4 +28,43 @@ cd build
 cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DCMAKE_PREFIX_PATH=$LOCAL/veccore/install -DBUILTIN_VECCORE=OFF -DBACKEND=Vc -DVc=ON -DVECGEOM_VECTOR=sse4.2 -DUSOLIDS=ON -DROOT=ON -DBENCHMARK=ON -DCTEST=ON -DVALIDATION=OFF -DNO_SPECIALIZATION=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 make -j $1
 make install
+
+# scram stuff
+# install as a separate tool to avoid conflicts with scalar version used in geant4 (or massive recompiling)
+cat << 'EOF_TOOLFILE' > vecgeomV_interface.xml
+<tool name="vecgeomV_interface" version="v00.05.01">
+  <info url="https://gitlab.cern.ch/VecGeom/VecGeom"/>
+  <client>
+    <environment name="VECGEOM_INTERFACE_BASE" default="$INSTALLDIR"/>
+    <environment name="INCLUDE" default="$VECGEOM_INTERFACE_BASE/include"/>
+  </client>
+  <flags CPPDEFINES="VECGEOM_REPLACE_USOLIDS"/>
+  <flags CPPDEFINES="VECGEOM_NO_SPECIALIZATION"/>
+  <flags CPPDEFINES="VECGEOM_USOLIDS"/>
+  <flags CPPDEFINES="VECGEOM_INPLACE_TRANSFORMATIONS"/>
+  <flags CPPDEFINES="VECGEOM_USE_INDEXEDNAVSTATES"/>
+  <runtime name="ROOT_INCLUDE_PATH" value="$INCLUDE" type="path"/>
+  <use name="root_cxxdefaults"/>
+</tool>
+EOF_TOOLFILE
+sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' vecgeomV_interface.xml
+
+cat << 'EOF_TOOLFILE' > vecgeomV.xml
+<tool name="vecgeom" version="v00.05.01">
+  <info url="https://gitlab.cern.ch/VecGeom/VecGeom"/>
+  <lib name="vecgeom"/>
+  <lib name="usolids"/>
+  <client>
+    <environment name="VECGEOM_BASE" default="$INSTALLDIR"/>
+    <environment name="LIBDIR" default="$VECGEOM_BASE/lib"/>
+  </client>
+  <use name="vecgeom_interface"/>
+</tool>
+EOF_TOOLFILE
+sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' vecgeomV.xml
+
+mv vecgeomV_interface.xml ${CMSSW_BASE}/config/toolbox/${SCRAM_ARCH}/tools/selected
+scram setup vecgeomV_interface
+mv vecgeomV.xml ${CMSSW_BASE}/config/toolbox/${SCRAM_ARCH}/tools/selected
+scram setup vecgeomV
 

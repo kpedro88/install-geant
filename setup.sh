@@ -1,24 +1,13 @@
 #!/bin/bash
 
 LINKS_ALL=(
-python \
-clhep \
-xercesc \
-boost \
-tbb \
-gdb \
-igprof \
 )
 
 INSTALLS_ALL=(
-root \
-geant4 \
 hepmc \
-pythia8 \
 veccore \
 vecgeom \
 geantv \
-toy-mt-framework \
 )
 
 CORES=1
