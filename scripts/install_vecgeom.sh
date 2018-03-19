@@ -25,14 +25,14 @@ fi
 
 mkdir build
 cd build
-cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DCMAKE_PREFIX_PATH=$LOCAL/veccore/install -DBUILTIN_VECCORE=OFF -DBACKEND=Vc -DVc=ON -DVECGEOM_VECTOR=sse4.2 -DUSOLIDS=ON -DROOT=ON -DBENCHMARK=ON -DCTEST=ON -DVALIDATION=OFF -DNO_SPECIALIZATION=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DCMAKE_PREFIX_PATH=$LOCAL/veccore/install -DBUILTIN_VECCORE=OFF -DBACKEND=Vc -DVc=ON -DVECGEOM_VECTOR=sse4.2 -DUSOLIDS=ON -DROOT=ON -DBENCHMARK=ON -DCTEST=ON -DVALIDATION=OFF -DNO_SPECIALIZATION=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_STANDARD=14
 make -j $1
 make install
 
 # scram stuff
 # install as a separate tool to avoid conflicts with scalar version used in geant4 (or massive recompiling)
-cat << 'EOF_TOOLFILE' > vecgeomV_interface.xml
-<tool name="vecgeomV_interface" version="v00.05.01">
+cat << 'EOF_TOOLFILE' > vecgeomv_interface.xml
+<tool name="vecgeomv_interface" version="v00.05.01">
   <info url="https://gitlab.cern.ch/VecGeom/VecGeom"/>
   <client>
     <environment name="VECGEOM_INTERFACE_BASE" default="$INSTALLDIR"/>
@@ -47,10 +47,10 @@ cat << 'EOF_TOOLFILE' > vecgeomV_interface.xml
   <use name="root_cxxdefaults"/>
 </tool>
 EOF_TOOLFILE
-sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' vecgeomV_interface.xml
+sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' vecgeomv_interface.xml
 
-cat << 'EOF_TOOLFILE' > vecgeomV.xml
-<tool name="vecgeom" version="v00.05.01">
+cat << 'EOF_TOOLFILE' > vecgeomv.xml
+<tool name="vecgeomv" version="v00.05.01">
   <info url="https://gitlab.cern.ch/VecGeom/VecGeom"/>
   <lib name="vecgeom"/>
   <lib name="usolids"/>
@@ -58,13 +58,13 @@ cat << 'EOF_TOOLFILE' > vecgeomV.xml
     <environment name="VECGEOM_BASE" default="$INSTALLDIR"/>
     <environment name="LIBDIR" default="$VECGEOM_BASE/lib"/>
   </client>
-  <use name="vecgeom_interface"/>
+  <use name="vecgeomv_interface"/>
 </tool>
 EOF_TOOLFILE
-sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' vecgeomV.xml
+sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' vecgeomv.xml
 
-mv vecgeomV_interface.xml ${CMSSW_BASE}/config/toolbox/${SCRAM_ARCH}/tools/selected
-scram setup vecgeomV_interface
-mv vecgeomV.xml ${CMSSW_BASE}/config/toolbox/${SCRAM_ARCH}/tools/selected
-scram setup vecgeomV
+mv vecgeomv_interface.xml ${CMSSW_BASE}/config/toolbox/${SCRAM_ARCH}/tools/selected
+scram setup vecgeomv_interface
+mv vecgeomv.xml ${CMSSW_BASE}/config/toolbox/${SCRAM_ARCH}/tools/selected
+scram setup vecgeomv
 
