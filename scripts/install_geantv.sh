@@ -36,8 +36,8 @@ make install
 
 # allow using some extra headers from examples
 mkdir -p ${INSTALLDIR}/Geant/example
-cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/Geant/example/
-cp examples/physics/cmsToyGV/TBBProcessingDemo/TBBTestModules/CMSApplicationTBB.h ${INSTALLDIR}/Geant/example/
+cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/inc/Geant/example/
+cp ../examples/physics/cmsToyGV/TBBProcessingDemo/TBBTestModules/CMSApplicationTBB.h ${INSTALLDIR}/inc/Geant/example/
 
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
@@ -46,6 +46,7 @@ cat << 'EOF_TOOLFILE' > geantv.xml
   <info url="https://gitlab.cern.ch/GeantV/geant.git"/>
   <lib name="Geant_v"/>
   <lib name="GeantExamplesRP"/>
+  <lib name="RealPhysics"/>
   <client>
     <environment name="GEANTV_BASE" default="$INSTALLDIR"/>
     <environment name="LIBDIR" default="$GEANTV_BASE/lib"/>

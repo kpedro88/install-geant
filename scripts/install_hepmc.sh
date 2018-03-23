@@ -49,7 +49,7 @@ EOF_TOOLFILE
 sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' hepmc3.xml
 
 cat << 'EOF_TOOLFILE' > hepmc3_headers.xml
-<tool name="hepmc_headers" version="beta2.0">
+<tool name="hepmc3_headers" version="beta2.0">
   <client>
     <environment name="HEPMC_HEADERS_BASE" default="$INSTALLDIR"/>
     <environment name="INCLUDE" default="$HEPMC_HEADERS_BASE/include"/>

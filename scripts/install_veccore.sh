@@ -29,3 +29,18 @@ cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DBUILD_UMESIMD="ON" -DB
 make -j $1
 make install
 
+# scram stuff
+cat << 'EOF_TOOLFILE' > veccore.xml
+<tool name="VecCore" version="master">
+  <info url="https://github.com/root-project/veccore.git"/>
+  <client>
+    <environment name="VECCORE_BASE" default="$INSTALLDIR"/>
+    <environment name="INCLUDE" default="$VECCORE_BASE/include"/>
+  </client>
+</tool>
+EOF_TOOLFILE
+sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' veccore.xml
+
+mv veccore.xml ${CMSSW_BASE}/config/toolbox/${SCRAM_ARCH}/tools/selected/
+scram setup veccore
+
