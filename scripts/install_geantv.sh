@@ -34,16 +34,29 @@ cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DUSE_VECGEOM_NAVIGATOR=
 make -j $1
 make install
 
+# allow using some extra headers from examples
+mkdir -p ${INSTALLDIR}/Geant/example
+cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/Geant/example/
+cp examples/physics/cmsToyGV/TBBProcessingDemo/TBBTestModules/CMSApplicationTBB.h ${INSTALLDIR}/Geant/example/
+
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
 cat << 'EOF_TOOLFILE' > geantv.xml
 <tool name="GeantV" version="master">
   <info url="https://gitlab.cern.ch/GeantV/geant.git"/>
+  <lib name="Geant_v"/>
+  <lib name="GeantExamplesRP"/>
+  <client>
+    <environment name="GEANTV_BASE" default="$INSTALLDIR"/>
+    <environment name="LIBDIR" default="$GEANTV_BASE/lib"/>
+    <environment name="INCLUDE" default="$GEANTV_BASE/inc"/>
+  </client>
   <use name="vecgeomv"/>
   <use name="clhep"/>
   <use name="pythia8"/>
 </tool>
 EOF_TOOLFILE
+sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' geantv.xml
 
 mv geantv.xml ${CMSSW_BASE}/config/toolbox/${SCRAM_ARCH}/tools/selected/
 scram setup geantv
