@@ -37,6 +37,7 @@ cat << 'EOF_TOOLFILE' > veccore.xml
     <environment name="VECCORE_BASE" default="$INSTALLDIR"/>
     <environment name="INCLUDE" default="$VECCORE_BASE/include"/>
   </client>
+  <flags CPPDEFINES="VECCORE_ENABLE_VC"/>
 </tool>
 EOF_TOOLFILE
 sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' veccore.xml

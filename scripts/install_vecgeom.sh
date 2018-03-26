@@ -43,6 +43,9 @@ cat << 'EOF_TOOLFILE' > vecgeomv_interface.xml
   <flags CPPDEFINES="VECGEOM_USOLIDS"/>
   <flags CPPDEFINES="VECGEOM_INPLACE_TRANSFORMATIONS"/>
   <flags CPPDEFINES="VECGEOM_USE_INDEXEDNAVSTATES"/>
+  <flags CPPDEFINES="VECGEOM_QUADRILATERALS_VC"/>
+  <flags CPPDEFINES="VECGEOM_VC"/>
+  <flags CPPDEFINES="VECGEOM_ROOT"/>
   <runtime name="ROOT_INCLUDE_PATH" value="$INCLUDE" type="path"/>
   <use name="root_cxxdefaults"/>
 </tool>
@@ -54,6 +57,7 @@ cat << 'EOF_TOOLFILE' > vecgeomv.xml
   <info url="https://gitlab.cern.ch/VecGeom/VecGeom"/>
   <lib name="vecgeom"/>
   <lib name="usolids"/>
+  <flags CXXFLAGS="-msse4.2 -pthread"/>
   <client>
     <environment name="VECGEOM_BASE" default="$INSTALLDIR"/>
     <environment name="LIBDIR" default="$VECGEOM_BASE/lib"/>

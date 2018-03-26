@@ -46,11 +46,15 @@ cat << 'EOF_TOOLFILE' > geantv.xml
   <lib name="Geant_v"/>
   <lib name="GeantExamplesRP"/>
   <lib name="RealPhysics"/>
+  <flags CXXFLAGS="-msse4.2 -pthread"/>
   <client>
     <environment name="GEANTV_BASE" default="$INSTALLDIR"/>
     <environment name="LIBDIR" default="$GEANTV_BASE/lib"/>
     <environment name="INCLUDE" default="$GEANTV_BASE/inc"/>
   </client>
+  <flags CPPDEFINES="USE_ROOT"/>
+  <flags CPPDEFINES="USE_VECGEOM_CONTAINERS"/>
+  <flags CPPDEFINES="USE_VECGEOM_NAVIGATOR"/>
   <use name="vecgeomv"/>
   <use name="clhep"/>
   <use name="pythia8"/>
