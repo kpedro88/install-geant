@@ -35,9 +35,8 @@ make -j $1
 make install
 
 # allow using some extra headers from examples
-mkdir -p ${INSTALLDIR}/Geant/example
+mkdir -p ${INSTALLDIR}/inc/Geant/example
 cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/inc/Geant/example/
-cp ../examples/physics/cmsToyGV/TBBProcessingDemo/TBBTestModules/CMSApplicationTBB.h ${INSTALLDIR}/inc/Geant/example/
 
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
