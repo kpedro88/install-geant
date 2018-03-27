@@ -37,6 +37,7 @@ make install
 # allow using some extra headers from examples
 mkdir -p ${INSTALLDIR}/inc/Geant/example
 cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/inc/Geant/example/
+cp -r ../physics/data ${INSTALLDIR}/data
 
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
@@ -52,6 +53,7 @@ cat << 'EOF_TOOLFILE' > geantv.xml
     <environment name="LIBDIR" default="$GEANTV_BASE/lib"/>
     <environment name="INCLUDE" default="$GEANTV_BASE/inc"/>
   </client>
+  <runtime name="GEANT_PHYSICS_DATA" value="$INSTALLDIR/data"/>
   <flags CPPDEFINES="USE_ROOT"/>
   <flags CPPDEFINES="USE_VECGEOM_CONTAINERS"/>
   <flags CPPDEFINES="USE_VECGEOM_NAVIGATOR"/>
