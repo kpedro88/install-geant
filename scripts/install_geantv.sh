@@ -14,7 +14,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone https://gitlab.cern.ch/GeantV/geant.git -b master
+	git clone https://gitlab.cern.ch/GeantV/geant.git -b alpha
 fi
 
 cd $SOURCEDIR
