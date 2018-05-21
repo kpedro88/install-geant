@@ -1,0 +1,26 @@
+diff --git a/core/interfaces/inc/Geant/Event.h b/core/interfaces/inc/Geant/Event.h
+index 628bf22d..ee8f108c 100644
+--- a/core/interfaces/inc/Geant/Event.h
++++ b/core/interfaces/inc/Geant/Event.h
+@@ -199,6 +199,9 @@ public:
+ 
+   /** @brief Print function */
+   void Print(const char *option = "") const;
++
++  /** @brief For external use */
++  virtual void FinalActions() {}
+ };
+ 
+ } // GEANT_IMPL_NAMESPACE
+diff --git a/core/interfaces/src/Event.cxx b/core/interfaces/src/Event.cxx
+index 248336a1..82555c45 100644
+--- a/core/interfaces/src/Event.cxx
++++ b/core/interfaces/src/Event.cxx
+@@ -59,6 +59,7 @@ bool Event::StopTrack(RunManager *runmgr, TaskData *td)
+     fTransported = true;
+     // Notify run manager that event is transported
+     runmgr->EventTransported(this, td);
++    FinalActions();
+     return false;
+   }
+   if (!fPrioritize) {

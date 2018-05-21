@@ -2,6 +2,7 @@
 
 source init.sh
 
+CURRDIR=`pwd`
 SOURCEDIR=geant
 INSTALLDIR=$LOCAL/geantv/install
 
@@ -18,6 +19,8 @@ if ! [ -d $SOURCEDIR ]; then
 fi
 
 cd $SOURCEDIR
+# patch for externalwork
+patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
 
 if [ -d build ]; then
 	rm -rf build
