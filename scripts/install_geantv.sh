@@ -21,6 +21,8 @@ fi
 cd $SOURCEDIR
 # patch for externalwork
 patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
+# patch for magfield warning
+patch -p1 < ${CURRDIR}/scripts/initialize_errmax_sqFinal.patch
 
 if [ -d build ]; then
 	rm -rf build
@@ -41,6 +43,9 @@ make install
 mkdir -p ${INSTALLDIR}/inc/Geant/example
 cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/inc/Geant/example/
 cp -r ../physics/data ${INSTALLDIR}/data
+# get mag field headers
+cp ../magneticfield/inc/Geant/*.h ${INSTALLDIR}/inc/Geant/
+cp ../run/userapp/inc/Geant/UserFieldConstruction.h ${INSTALLDIR}/inc/Geant/
 
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
@@ -50,6 +55,7 @@ cat << 'EOF_TOOLFILE' > geantv.xml
   <lib name="Geant_v"/>
   <lib name="GeantExamplesRP"/>
   <lib name="RealPhysics"/>
+  <lib name="Vmagfield"/>
   <flags CXXFLAGS="-msse4.2 -pthread"/>
   <client>
     <environment name="GEANTV_BASE" default="$INSTALLDIR"/>
