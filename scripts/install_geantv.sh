@@ -16,13 +16,16 @@ fi
 
 if ! [ -d $SOURCEDIR ]; then
 	git clone https://gitlab.cern.ch/GeantV/geant.git -b alpha
+	cd $SOURCEDIR
+	# patch for externalwork
+	patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
+	# patch for magfield warning
+	patch -p1 < ${CURRDIR}/scripts/initialize_errmax_sqFinal.patch
+	# patch for magfield memory leak (backported)
+	patch -p1 < ${CURRDIR}/scripts/fix_memory_leak_field.patch
+else
+	cd $SOURCEDIR
 fi
-
-cd $SOURCEDIR
-# patch for externalwork
-patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
-# patch for magfield warning
-patch -p1 < ${CURRDIR}/scripts/initialize_errmax_sqFinal.patch
 
 if [ -d build ]; then
 	rm -rf build
