@@ -6,6 +6,7 @@ LINKS_ALL=(
 INSTALLS_ALL=(
 hepmc \
 veccore \
+vecmath \
 vecgeom \
 geantv \
 )
