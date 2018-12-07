@@ -14,7 +14,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone https://gitlab.cern.ch/VecGeom/VecGeom.git -b v00.05.01
+	git clone https://gitlab.cern.ch/VecGeom/VecGeom.git -b v01.01.00
 fi
 
 cd $SOURCEDIR
@@ -32,7 +32,7 @@ make install
 # scram stuff
 # install as a separate tool to avoid conflicts with scalar version used in geant4 (or massive recompiling)
 cat << 'EOF_TOOLFILE' > vecgeomv_interface.xml
-<tool name="vecgeomv_interface" version="v00.05.01">
+<tool name="vecgeomv_interface" version="v01.01.00">
   <info url="https://gitlab.cern.ch/VecGeom/VecGeom"/>
   <client>
     <environment name="VECGEOM_INTERFACE_BASE" default="$INSTALLDIR"/>
@@ -53,7 +53,7 @@ EOF_TOOLFILE
 sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' vecgeomv_interface.xml
 
 cat << 'EOF_TOOLFILE' > vecgeomv.xml
-<tool name="vecgeomv" version="v00.05.01">
+<tool name="vecgeomv" version="v01.01.00">
   <info url="https://gitlab.cern.ch/VecGeom/VecGeom"/>
   <lib name="vecgeom"/>
   <lib name="usolids"/>
