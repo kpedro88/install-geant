@@ -14,7 +14,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone https://github.com/root-project/veccore.git
+	git clone https://github.com/root-project/veccore.git -b v0.5.2
 fi
 
 cd $SOURCEDIR
@@ -31,7 +31,7 @@ make install
 
 # scram stuff
 cat << 'EOF_TOOLFILE' > veccore.xml
-<tool name="VecCore" version="master">
+<tool name="VecCore" version="0.5.2">
   <info url="https://github.com/root-project/veccore.git"/>
   <client>
     <environment name="VECCORE_BASE" default="$INSTALLDIR"/>
