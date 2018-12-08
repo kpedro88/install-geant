@@ -16,7 +16,7 @@ fi
 if ! [ -d $SOURCEDIR ]; then
 	git clone https://github.com/kpedro88/vecmath.git
 	cd $SOURCEDIR
-	git reset --hard 96d28bf
+	git reset --hard 5095831
 else
 	cd $SOURCEDIR
 fi
@@ -37,7 +37,7 @@ make install
 
 # scram stuff
 cat << 'EOF_TOOLFILE' > vecmath.xml
-<tool name="VecMath" version="96d28bf">
+<tool name="VecMath" version="5095831">
   <info url="https://github.com/root-project/vecmath.git"/>
   <client>
     <environment name="VECMATH_BASE" default="$INSTALLDIR"/>
