@@ -1,7 +1,16 @@
 diff --git a/core/interfaces/inc/Geant/Event.h b/core/interfaces/inc/Geant/Event.h
-index 628bf22d..ee8f108c 100644
+index 628bf22d..434fa0db 100644
 --- a/core/interfaces/inc/Geant/Event.h
 +++ b/core/interfaces/inc/Geant/Event.h
+@@ -49,7 +49,7 @@ public:
+   Event() : fNtracks(0), fNdone(0), fNmax(0), fLock(), fNfilled(0), fNdispatched(0) {}
+ 
+   /** @brief Event destructor */
+-  ~Event() {}
++  virtual ~Event() {}
+ 
+   /* @brief Function for accounting adding a new track */
+   int AddTrack();
 @@ -199,6 +199,9 @@ public:
  
    /** @brief Print function */
