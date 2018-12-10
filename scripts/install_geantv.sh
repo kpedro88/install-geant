@@ -42,6 +42,8 @@ make install
 mkdir -p ${INSTALLDIR}/inc/Geant/example
 cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/inc/Geant/example/
 cp -r ../physics/data ${INSTALLDIR}/data
+# quick patch
+sed -i 's~#include "GeantConfig.h"~#include "Geant/GeantConfig.h"~' ${INSTALLDIR}/inc/Geant/example/CMSPhysicsList.h
 # get mag field headers
 cp ../magneticfield/inc/Geant/*.h ${INSTALLDIR}/inc/Geant/
 cp ../run/userapp/inc/Geant/UserFieldConstruction.h ${INSTALLDIR}/inc/Geant/
