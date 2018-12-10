@@ -1,0 +1,14 @@
+diff --git a/run/scheduler/src/EventServer.cxx b/run/scheduler/src/EventServer.cxx
+index 7d64a6b7..bc34097b 100644
+--- a/run/scheduler/src/EventServer.cxx
++++ b/run/scheduler/src/EventServer.cxx
+@@ -139,7 +139,7 @@ bool EventServer::AddEvent(Event *event)
+   // Adds one event into the queue of pending events.
+   bool external_loop = fRunMgr->GetConfig()->fRunMode == GeantConfig::kExternalLoop;
+   int evt            = event->GetEvent();
+-  assert(evt < fNevents);
++  assert(external_loop or evt < fNevents);
+   // The vertex must be defined
+   vecgeom::Vector3D<double> vertex = event->GetVertex();
+   int ntracks                      = event->GetNprimaries();
+

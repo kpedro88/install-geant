@@ -19,6 +19,8 @@ if ! [ -d $SOURCEDIR ]; then
 	cd $SOURCEDIR
 	# patch for externalwork
 	patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
+	# patch for eventserver
+	patch -p1 < ${CURRDIR}/scripts/fix_EventServer_externalLoop.patch
 else
 	cd $SOURCEDIR
 fi
