@@ -66,6 +66,7 @@ cat << 'EOF_TOOLFILE' > geantv.xml
   <flags CPPDEFINES="USE_VECGEOM_CONTAINERS"/>
   <flags CPPDEFINES="USE_VECGEOM_NAVIGATOR"/>
   <use name="vecgeomv"/>
+  <use name="vecmath"/>
   <use name="clhep"/>
   <use name="pythia8"/>
 </tool>

@@ -43,6 +43,7 @@ cat << 'EOF_TOOLFILE' > vecmath.xml
     <environment name="VECMATH_BASE" default="$INSTALLDIR"/>
     <environment name="INCLUDE" default="$VECMATH_BASE/include"/>
   </client>
+  <use name="vdt"/>
 </tool>
 EOF_TOOLFILE
 sed -i 's~$INSTALLDIR~'$INSTALLDIR'~' vecmath.xml
