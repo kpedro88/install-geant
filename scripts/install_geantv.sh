@@ -17,10 +17,9 @@ fi
 if ! [ -d $SOURCEDIR ]; then
 	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta
 	cd $SOURCEDIR
+	git checkout f54f05313e09e64c0ca3a697cd74db5d3faddc0e
 	# patch for externalwork
 	patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
-	# patch for eventserver
-	patch -p1 < ${CURRDIR}/scripts/fix_EventServer_externalLoop.patch
 else
 	cd $SOURCEDIR
 fi
@@ -46,9 +45,6 @@ cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/inc/Geant/example/
 cp -r ../physics/data ${INSTALLDIR}/data
 # quick patch
 sed -i 's~#include "GeantConfig.h"~#include "Geant/GeantConfig.h"~' ${INSTALLDIR}/inc/Geant/example/CMSPhysicsList.h
-# get mag field headers
-cp ../magneticfield/inc/Geant/*.h ${INSTALLDIR}/inc/Geant/
-cp ../run/userapp/inc/Geant/UserFieldConstruction.h ${INSTALLDIR}/inc/Geant/
 
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
