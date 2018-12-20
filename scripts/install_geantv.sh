@@ -15,9 +15,8 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta
+	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta-2
 	cd $SOURCEDIR
-	git checkout f54f05313e09e64c0ca3a697cd74db5d3faddc0e
 	# patch for externalwork
 	patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
 else
