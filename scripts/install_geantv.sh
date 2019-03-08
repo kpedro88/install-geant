@@ -15,7 +15,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta-2
+	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta-4
 	cd $SOURCEDIR
 	# patch for externalwork
 	patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
@@ -48,7 +48,7 @@ sed -i 's~#include "GeantConfig.h"~#include "Geant/GeantConfig.h"~' ${INSTALLDIR
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
 cat << 'EOF_TOOLFILE' > geantv.xml
-<tool name="GeantV" version="pre-beta">
+<tool name="GeantV" version="pre-beta-4">
   <info url="https://gitlab.cern.ch/GeantV/geant.git"/>
   <lib name="Geant_v"/>
   <lib name="GeantExamplesRP"/>
