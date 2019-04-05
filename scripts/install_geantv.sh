@@ -17,6 +17,7 @@ fi
 if ! [ -d $SOURCEDIR ]; then
 	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta-4
 	cd $SOURCEDIR
+	git checkout c3ba8a34e7982a9b48951f13ac5d97b892524361
 	# patch for externalwork
 	patch -p1 < ${CURRDIR}/scripts/add_Event_FinalActions.patch
 else
