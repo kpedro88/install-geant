@@ -15,7 +15,7 @@ if [ "$FORCERECOMP" = "true" ]; then
 fi
 
 if ! [ -d $SOURCEDIR ]; then
-	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta-5
+	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta-6
 	cd $SOURCEDIR
 else
 	cd $SOURCEDIR
@@ -46,7 +46,7 @@ sed -i 's~#include "GeantConfig.h"~#include "Geant/GeantConfig.h"~' ${INSTALLDIR
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
 cat << 'EOF_TOOLFILE' > geantv.xml
-<tool name="GeantV" version="pre-beta-5">
+<tool name="GeantV" version="pre-beta-6">
   <info url="https://gitlab.cern.ch/GeantV/geant.git"/>
   <lib name="Geant_v"/>
   <lib name="GeantExamplesRP"/>
