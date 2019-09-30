@@ -8,6 +8,7 @@ hepmc \
 veccore \
 vecmath \
 vecgeom \
+oldvc \
 geantv \
 )
 

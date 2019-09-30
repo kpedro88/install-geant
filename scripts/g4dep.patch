@@ -1,0 +1,48 @@
+diff --git a/examples/physics/FullCMS/Geant4/CMakeLists.txt b/examples/physics/FullCMS/Geant4/CMakeLists.txt
+index 1a927501..0b851b4c 100644
+--- a/examples/physics/FullCMS/Geant4/CMakeLists.txt
++++ b/examples/physics/FullCMS/Geant4/CMakeLists.txt
+@@ -13,6 +13,11 @@ find_package(Geant4 REQUIRED)
+ # Setup Geant4 include directories and compile definitions
+ # Setup include directory for this project
+ #
++get_property(TMP_INCLUDE_DIRECTORIES DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
++list(REMOVE_ITEM TMP_INCLUDE_DIRECTORIES "${VECGEOM_INCLUDE_DIR}" "${VecCore_INCLUDE_DIR}")
++set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES ${TMP_INCLUDE_DIRECTORIES})
++remove_definitions(-DVECGEOM_VC)
++include_directories(${OldVc_INCLUDE_DIR})
+ include(${Geant4_USE_FILE})
+ include_directories(${PROJECT_SOURCE_DIR}/include)
+ 
+diff --git a/examples/physics/TestEm3/Geant4/CMakeLists.txt b/examples/physics/TestEm3/Geant4/CMakeLists.txt
+index d9f9cd84..b8f5b1f1 100644
+--- a/examples/physics/TestEm3/Geant4/CMakeLists.txt
++++ b/examples/physics/TestEm3/Geant4/CMakeLists.txt
+@@ -19,6 +19,11 @@ endif()
+ # Setup Geant4 include directories and compile definitions
+ #
+ include(${Geant4_USE_FILE})
++get_property(TMP_INCLUDE_DIRECTORIES DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
++list(REMOVE_ITEM TMP_INCLUDE_DIRECTORIES "${VECGEOM_INCLUDE_DIR}" "${VecCore_INCLUDE_DIR}")
++set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES ${TMP_INCLUDE_DIRECTORIES})
++remove_definitions(-DVECGEOM_VC)
++include_directories(${OldVc_INCLUDE_DIR})
+ 
+ #----------------------------------------------------------------------------
+ # Locate sources and headers for this project
+diff --git a/examples/physics/TestEm5/Geant4/CMakeLists.txt b/examples/physics/TestEm5/Geant4/CMakeLists.txt
+index 8195938f..bde3f3c1 100644
+--- a/examples/physics/TestEm5/Geant4/CMakeLists.txt
++++ b/examples/physics/TestEm5/Geant4/CMakeLists.txt
+@@ -19,6 +19,11 @@ endif()
+ # Setup Geant4 include directories and compile definitions
+ #
+ include(${Geant4_USE_FILE})
++get_property(TMP_INCLUDE_DIRECTORIES DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
++list(REMOVE_ITEM TMP_INCLUDE_DIRECTORIES "${VECGEOM_INCLUDE_DIR}" "${VecCore_INCLUDE_DIR}")
++set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES ${TMP_INCLUDE_DIRECTORIES})
++remove_definitions(-DVECGEOM_VC)
++include_directories(${OldVc_INCLUDE_DIR})
+ 
+ #----------------------------------------------------------------------------
+ # Locate sources and headers for this project
