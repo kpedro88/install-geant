@@ -25,8 +25,11 @@ else
 	cd $SOURCEDIR
 fi
 
-# just copy header files that are missing from CMSSW
-cp -r include $INSTALLDIR
-for i in avx common mic scalar sse traits; do
-	cp -r $i $INSTALLDIR/include/Vc
-done
+if [ -d build ]; then
+	rm -rf build
+fi
+mkdir build
+cd build
+cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DBUILD_TESTING=OFF
+make -j $1
+make install
