@@ -17,6 +17,7 @@ fi
 if ! [ -d $SOURCEDIR ]; then
 	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta-7
 	cd $SOURCEDIR
+	git checkout 63468c9b3b92ead35c924e8fc67c6fa13bcff493
 else
 	cd $SOURCEDIR
 fi
@@ -46,7 +47,7 @@ sed -i 's~#include "GeantConfig.h"~#include "Geant/GeantConfig.h"~' ${INSTALLDIR
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
 cat << 'EOF_TOOLFILE' > geantv.xml
-<tool name="GeantV" version="pre-beta-7">
+<tool name="GeantV" version="pre-beta-7.5">
   <info url="https://gitlab.cern.ch/GeantV/geant.git"/>
   <lib name="Geant_v"/>
   <lib name="GeantExamplesRP"/>
