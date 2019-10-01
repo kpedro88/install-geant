@@ -11,8 +11,9 @@ hepmc \
 veccore \
 vecmath \
 vecgeom \
-oldvc \
 geantv \
+oldvc \
+geantvtest \
 )
 
 CORES=1
