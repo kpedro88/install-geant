@@ -18,7 +18,7 @@ if ! [ -d $SOURCEDIR ]; then
 	git clone https://gitlab.cern.ch/GeantV/geant.git -b pre-beta-7
 	cd $SOURCEDIR
 	git checkout 63468c9b3b92ead35c924e8fc67c6fa13bcff493
-	git apply ${CURRDIR}/scripts/g4deps.patch
+	git apply ${CURRDIR}/scripts/g4dep.patch
 else
 	cd $SOURCEDIR
 fi
