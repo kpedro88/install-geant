@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# to avoid inconsistent paths
+set -P
+
 LINKS_ALL=(
 )
 
