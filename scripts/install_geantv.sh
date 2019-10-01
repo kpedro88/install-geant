@@ -39,12 +39,8 @@ cmake ../ $DEBUGFLAG -DCMAKE_INSTALL_PREFIX=$INSTALLDIR -DVecCore_DIR=$LOCAL/vec
 make -j $1
 make install
 
-# allow using some extra headers from examples
-mkdir -p ${INSTALLDIR}/inc/Geant/example
-cp ../examples/physics/FullCMS/GeantV/inc/*.h ${INSTALLDIR}/inc/Geant/example/
+# get physics data
 cp -r ../physics/data ${INSTALLDIR}/data
-# quick patch
-sed -i 's~#include "GeantConfig.h"~#include "Geant/GeantConfig.h"~' ${INSTALLDIR}/inc/Geant/example/CMSPhysicsList.h
 
 # scram stuff
 # also uses Vc, HepMC3; not scram tools yet
@@ -52,7 +48,6 @@ cat << 'EOF_TOOLFILE' > geantv.xml
 <tool name="GeantV" version="pre-beta-7.5">
   <info url="https://gitlab.cern.ch/GeantV/geant.git"/>
   <lib name="Geant_v"/>
-  <lib name="GeantExamplesRP"/>
   <lib name="RealPhysics"/>
   <lib name="Vmagfield"/>
   <flags CXXFLAGS="-msse4.2 -pthread"/>

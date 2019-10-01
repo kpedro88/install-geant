@@ -1,3 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a5ea488e..4806e086 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -584,9 +584,6 @@ if (WITH_NUDY)
+ endif()
+ 
+ add_subdirectory(physics)
+-if (BUILD_REAL_PHYSICS_TESTS)
+-  add_subdirectory(physics/tests)
+-endif()
+ 
+ add_subdirectory(physics/kernel/material)
+ 
 diff --git a/examples/physics/FullCMS/Geant4/CMakeLists.txt b/examples/physics/FullCMS/Geant4/CMakeLists.txt
 index 1a927501..f83f3361 100644
 --- a/examples/physics/FullCMS/Geant4/CMakeLists.txt
@@ -49,3 +63,30 @@ index 8195938f..671cef97 100644
  
  #----------------------------------------------------------------------------
  # Locate sources and headers for this project
+diff --git a/physics/CMakeLists.txt b/physics/CMakeLists.txt
+index c16d568c..28853110 100644
+--- a/physics/CMakeLists.txt
++++ b/physics/CMakeLists.txt
+@@ -105,7 +105,7 @@ endif()
+ #----------------------------------------------------------------------------------------------
+ add_library(RealPhysics SHARED ${sources})
+ target_link_libraries(RealPhysics -L${CMAKE_LIBRARY_OUTPUT_DIRECTORY} Material Geant_v ${_extraLibs}
+-                      ${VECGEOM_LIBRARIES} ${Geant4_LIBRARIES} ${VecCoreLib_LIBRARIES})
++                      ${VECGEOM_LIBRARIES} ${VecCoreLib_LIBRARIES})
+ add_custom_target(realphyslib DEPENDS RealPhysics)
+ 
+ #----------------------------------------------------------------------------------------------
+diff --git a/physics/neutron/nudy/CMakeLists.txt b/physics/neutron/nudy/CMakeLists.txt
+index 7a57f09b..ac7e449e 100644
+--- a/physics/neutron/nudy/CMakeLists.txt
++++ b/physics/neutron/nudy/CMakeLists.txt
+@@ -25,8 +25,7 @@ endif()
+ #
+ add_library(Nudy SHARED ${sources} NudyDict.cxx)
+ target_link_libraries(Nudy -L${CMAKE_LIBRARY_OUTPUT_DIRECTORY} ${ROOT_LIBRARIES} MathMore 
+-                      ${VECGEOM_LIBRARIES}  ${Vc_LIBRARIES}
+-                      ${Geant4_LIBRARIES})
++                      ${VECGEOM_LIBRARIES}  ${Vc_LIBRARIES})
+ #----------------------------------------------------------------------------------------------
+ # Install the files
+ #
